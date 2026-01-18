@@ -238,4 +238,273 @@ document.addEventListener('DOMContentLoaded', () => {
             inquiryForm.style.display = 'block';
         }
     };
+
+    // ==================== CHATBOT FUNCTIONALITY ====================
+
+    const chatbotButton = document.getElementById('chatbotButton');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+
+    // Knowledge base for the chatbot
+    const knowledgeBase = {
+        greetings: [
+            "Hello! I'm the DASSKAN Assistant. How can I help you today?",
+            "Hi there! Welcome to DASSKAN Technologies. What would you like to know?",
+            "Hey! Great to see you. How can I assist you?"
+        ],
+        about: "DASSKAN Technologies is a problem-driven technology company focused on designing and developing practical solutions for real-world challenges faced by individuals and small businesses. We combine engineering, design thinking, and execution discipline to build systems that enhance productivity, comfort, and operational efficiency.",
+        services: "We offer:\n\n🔬 Solution Research & Prototyping - Taking concepts from discovery to field validation\n\n🌐 IoT & Smart Automation - Sensor-based systems for business workflows\n\n📊 Business Efficiency Tools - Custom dashboards, queue systems, and tracking platforms\n\n🤖 Artificial Intelligence - AI integration for decision-making and automation",
+        location: "We're based in Chennai, Tamil Nadu, India. Our team brings together expertise in electronics, software, UI/UX, automation, research, system integration, AI, and digital workflows.",
+        contact: "You can reach us at:\n\n📧 Email: dasskantechnologies@gmail.com\n💼 LinkedIn: DASSKAN Technologies\n📱 Instagram: @dass.kan\n\nOr fill out our inquiry form on this website!",
+        careers: "We're building a team of curious, driven individuals who want to work on meaningful problems. We look for people who are problem-oriented, detail-driven, curious about systems, comfortable building from zero, and passionate about tools & technology.\n\nOpportunities exist in Research & Field Study, Software & Systems Development, Hardware & Prototyping, Product Design & UX, and Operations & Partnerships.",
+        process: "Our methodology follows 5 key steps:\n\n1️⃣ Discover Problems - Engage directly with people and businesses\n2️⃣ Validate & Prioritize - Evaluate for relevance and impact\n3️⃣ Design Solutions - Create ergonomic, efficient systems\n4️⃣ Review & Refine - Collaborate for quality and clarity\n5️⃣ Build & Prototype - Develop solutions in-house",
+        team: "Our team consists of talented founders and co-founders:\n\n• Sajjan - Founder\n• Aditya Jayaraj - Founder\n• Annirudh - Co-Founder\n• Duruvaa S - Co-Founder\n• Akshay Kora - Co-Founder\n• Nithin - Co-Founder\n• Sarvesh Manohar - Co-Founder",
+        thanks: [
+            "You're welcome! Is there anything else you'd like to know?",
+            "Happy to help! Feel free to ask if you have more questions.",
+            "My pleasure! Let me know if you need anything else."
+        ],
+        default: "I'm here to help you learn about DASSKAN Technologies! You can ask me about:\n\n• Our company and mission\n• Services we offer\n• How we work\n• Our team\n• Career opportunities\n• Contact information\n\nWhat would you like to know?"
+    };
+
+    // Quick reply suggestions
+    const quickReplies = [
+        { text: "What do you do?", trigger: "services" },
+        { text: "How can I contact you?", trigger: "contact" },
+        { text: "Tell me about your team", trigger: "team" },
+        { text: "Career opportunities", trigger: "careers" }
+    ];
+
+    // Toggle chatbot
+    function toggleChatbot() {
+        chatbotContainer.classList.toggle('active');
+        chatbotButton.classList.toggle('active');
+
+        if (chatbotContainer.classList.contains('active')) {
+            chatbotInput.focus();
+            // Show initial quick replies if no messages yet
+            if (chatbotMessages.children.length === 1) {
+                setTimeout(() => showQuickReplies(quickReplies), 500);
+            }
+        }
+    }
+
+    // Get current time
+    function getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    // Add message to chat
+    function addMessage(text, sender = 'bot', showTime = true) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}`;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.textContent = sender === 'bot' ? '🤖' : '👤';
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content';
+
+        const bubble = document.createElement('div');
+        bubble.className = 'message-bubble';
+        bubble.textContent = text;
+
+        contentDiv.appendChild(bubble);
+
+        if (showTime) {
+            const time = document.createElement('div');
+            time.className = 'message-time';
+            time.textContent = getCurrentTime();
+            contentDiv.appendChild(time);
+        }
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(contentDiv);
+
+        chatbotMessages.appendChild(messageDiv);
+        scrollToBottom();
+    }
+
+    // Show typing indicator
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing-indicator';
+        typingDiv.id = 'typingIndicator';
+
+        typingDiv.innerHTML = `
+            <div class="message-avatar">🤖</div>
+            <div class="typing-dots">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        `;
+
+        chatbotMessages.appendChild(typingDiv);
+        scrollToBottom();
+    }
+
+    // Remove typing indicator
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+
+    // Show quick replies
+    function showQuickReplies(replies) {
+        const lastMessage = chatbotMessages.lastElementChild;
+        if (lastMessage && lastMessage.classList.contains('message')) {
+            const quickRepliesDiv = document.createElement('div');
+            quickRepliesDiv.className = 'quick-replies';
+
+            replies.forEach(reply => {
+                const button = document.createElement('button');
+                button.className = 'quick-reply';
+                button.textContent = reply.text;
+                button.onclick = () => handleQuickReply(reply);
+                quickRepliesDiv.appendChild(button);
+            });
+
+            lastMessage.querySelector('.message-content').appendChild(quickRepliesDiv);
+            scrollToBottom();
+        }
+    }
+
+    // Handle quick reply click
+    function handleQuickReply(reply) {
+        // Remove all quick replies
+        document.querySelectorAll('.quick-replies').forEach(el => el.remove());
+
+        // Add user message
+        addMessage(reply.text, 'user');
+
+        // Process the trigger
+        processMessage(reply.trigger);
+    }
+
+    // Scroll to bottom of messages
+    function scrollToBottom() {
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    // Get bot response based on user input
+    function getBotResponse(input) {
+        const lowerInput = input.toLowerCase();
+
+        // Greetings
+        if (lowerInput.match(/\b(hi|hello|hey|greetings|good morning|good afternoon|good evening)\b/)) {
+            return {
+                text: knowledgeBase.greetings[Math.floor(Math.random() * knowledgeBase.greetings.length)],
+                quickReplies: quickReplies
+            };
+        }
+
+        // About/Company
+        if (lowerInput.match(/\b(about|company|who are you|what is dasskan|tell me about)\b/)) {
+            return { text: knowledgeBase.about };
+        }
+
+        // Services
+        if (lowerInput.match(/\b(service|services|what do you do|offer|solutions|products)\b/)) {
+            return { text: knowledgeBase.services };
+        }
+
+        // Location
+        if (lowerInput.match(/\b(where|location|based|office|address)\b/)) {
+            return { text: knowledgeBase.location };
+        }
+
+        // Contact
+        if (lowerInput.match(/\b(contact|email|phone|reach|get in touch|connect)\b/)) {
+            return { text: knowledgeBase.contact };
+        }
+
+        // Careers
+        if (lowerInput.match(/\b(career|job|hiring|work|join|opportunity|opportunities|position)\b/)) {
+            return { text: knowledgeBase.careers };
+        }
+
+        // Process
+        if (lowerInput.match(/\b(process|how do you work|methodology|approach|workflow)\b/)) {
+            return { text: knowledgeBase.process };
+        }
+
+        // Team
+        if (lowerInput.match(/\b(team|founder|co-founder|people|who|members)\b/)) {
+            return { text: knowledgeBase.team };
+        }
+
+        // Thanks
+        if (lowerInput.match(/\b(thank|thanks|appreciate|grateful)\b/)) {
+            return {
+                text: knowledgeBase.thanks[Math.floor(Math.random() * knowledgeBase.thanks.length)]
+            };
+        }
+
+        // Default
+        return {
+            text: knowledgeBase.default,
+            quickReplies: quickReplies
+        };
+    }
+
+    // Process message
+    function processMessage(input) {
+        showTypingIndicator();
+
+        // Simulate thinking time
+        setTimeout(() => {
+            removeTypingIndicator();
+
+            const response = getBotResponse(input);
+            addMessage(response.text);
+
+            if (response.quickReplies) {
+                setTimeout(() => showQuickReplies(response.quickReplies), 300);
+            }
+        }, 800 + Math.random() * 400); // Random delay between 800-1200ms
+    }
+
+    // Handle send message
+    function sendMessage() {
+        const message = chatbotInput.value.trim();
+
+        if (message === '') return;
+
+        // Add user message
+        addMessage(message, 'user');
+        chatbotInput.value = '';
+
+        // Process and respond
+        processMessage(message);
+    }
+
+    // Event listeners
+    if (chatbotButton) {
+        chatbotButton.addEventListener('click', toggleChatbot);
+    }
+
+    if (chatbotClose) {
+        chatbotClose.addEventListener('click', toggleChatbot);
+    }
+
+    if (chatbotSend) {
+        chatbotSend.addEventListener('click', sendMessage);
+    }
+
+    if (chatbotInput) {
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    }
 });
+
