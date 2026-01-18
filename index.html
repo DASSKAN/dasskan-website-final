@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASSKAN Technologies - Engineering Solutions for Real-World Problems</title>
+    <meta name="description"
+        content="DASSKAN Technologies designs and develops practical solutions for real-world challenges faced by individuals and small businesses.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <nav id="navbar">
+        <div class="logo">DASSKAN</div>
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#what-we-do">WHAT WE DO</a></li>
+            <li><a href="#how-we-work">HOW WE WORK</a></li>
+            <li><a href="#team">TEAM</a></li>
+            <li><a href="#careers">CAREERS</a></li>
+            <li><a href="#inquiry">INQUIRY</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <!-- Animated Background -->
+        <div class="hero-background">
+            <img id="heroAnimatedBg" src="image sequence/00001.jpg" alt="DASSKAN Animation">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Innovation in Motion</span>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-line">DASSKAN</span>
+            </h1>
+
+            <p class="hero-subtitle">Engineering Solutions for Real-World Problems</p>
+
+            <div class="hero-description">
+                <p>Transforming challenges into intelligent systems through innovation, design thinking, and execution
+                    excellence.</p>
+            </div>
+
+            <div class="hero-cta-group">
+                <a href="#about" class="cta-primary">
+                    <span>Explore Our Work</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                </a>
+                <a href="#contact" class="cta-secondary">
+                    <span>Get In Touch</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title fade-in">
+            <span class="title-word">About</span>
+            <span class="title-word">Us</span>
+        </h2>
+        <div class="content-wrapper fade-in">
+            <p class="reveal-text">DASSKAN Technologies is a problem‑driven technology company focused on designing and
+                developing practical solutions for real‑world challenges faced by individuals and small businesses.</p>
+            <p class="reveal-text">We believe meaningful innovation begins with understanding how people work — their
+                environments, constraints, and everyday operational gaps. By combining engineering, design thinking, and
+                execution discipline, we build systems that enhance productivity, comfort, and operational efficiency.
+            </p>
+            <p class="reveal-text">Based in Chennai, Tamil Nadu, our team brings together expertise in electronics,
+                software, UI/UX, automation, research, system integration, Artificial Intelligence and digital
+                workflows. Our goal is simple: create technology that serves purpose, not noise.</p>
+        </div>
+    </section>
+
+    <section id="what-we-do">
+        <h2 class="section-title fade-in">
+            <span class="title-word">What</span>
+            <span class="title-word">We</span>
+            <span class="title-word">Do</span>
+        </h2>
+        <div class="content-wrapper fade-in">
+            <p style="text-align: center; font-size: 18px; margin-bottom: 40px;" class="reveal-text">Our work spans
+                across multiple domains that intersect human experience and business operations</p>
+            <div class="services-grid">
+                <div class="service-card" data-tilt>
+                    <div class="service-icon">
+                        <span class="icon-emoji">🔬</span>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>Solution Research & Prototyping</h3>
+                    <p>Taking concepts from discovery → design → 3D modeling → prototyping → field validation. We build
+                        for utility, scalability, and clarity of purpose.</p>
+                </div>
+                <div class="service-card" data-tilt>
+                    <div class="service-icon">
+                        <span class="icon-emoji">🌐</span>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>IoT & Smart Automation</h3>
+                    <p>Sensor‑based systems that monitor, track, and automate everyday business workflows for SMBs.</p>
+                </div>
+                <div class="service-card" data-tilt>
+                    <div class="service-icon">
+                        <span class="icon-emoji">📊</span>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>Business Efficiency Tools</h3>
+                    <p>Custom dashboards, queue systems, inventory monitors, and tracking platforms designed to support
+                        real business use cases.</p>
+                </div>
+                <div class="service-card" data-tilt>
+                    <div class="service-icon">
+                        <span class="icon-emoji">🤖</span>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>We integrate AI into practical real‑world scenarios — from decision‑making tools to data‑driven
+                        automation that enhances efficiency and insight.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-we-work">
+        <h2 class="section-title fade-in">
+            <span class="title-word">How</span>
+            <span class="title-word">We</span>
+            <span class="title-word">Work</span>
+        </h2>
+        <div class="content-wrapper fade-in">
+            <p style="text-align: center; font-size: 18px; margin-bottom: 40px;" class="reveal-text">Our methodology is
+                structured around understanding first, building second</p>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Discover Problems</h3>
+                        <p>We engage directly with people and businesses — observing workflows and identifying friction
+                            points.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Validate & Prioritize</h3>
+                        <p>Each problem is evaluated for relevance, feasibility, demand, and potential impact.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Design Solutions</h3>
+                        <p>Concepts are shaped into systems that are ergonomic, efficient, and practically deployable.
+                        </p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Review & Refine</h3>
+                        <p>Founders and specialists collaborate to refine designs for quality, clarity, and long‑term
+                            value.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Build & Prototype</h3>
+                        <p>Software solutions are developed in‑house while hardware prototypes are manufactured through
+                            trusted partners.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <h2 class="section-title fade-in">
+            <span class="title-word">Our</span>
+            <span class="title-word">Team</span>
+        </h2>
+        <div class="content-wrapper fade-in">
+            <h3 style="text-align: center; margin-bottom: 40px; font-size: 28px; color: #5FF4E7;">Founders & Co-Founders
+            </h3>
+            <div class="team-grid">
+                <div class="team-member team-member-clickable" data-image="sajjan-founder.png"
+                    onclick="openTeamModal(this)">
+                    <div class="team-photo team-photo-image">
+                        <img src="sajjan-founder.png" alt="Sajjan - Founder">
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <h3>Sajjan</h3>
+                    <p>FOUNDER</p>
+                    <div class="click-hint">Click to view full card</div>
+                </div>
+                <div class="team-member team-member-clickable" data-image="aditya-founder.png"
+                    onclick="openTeamModal(this)">
+                    <div class="team-photo team-photo-image">
+                        <img src="aditya-founder.png" alt="Aditya Jayaraj - Founder">
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <h3>Aditya Jayaraj</h3>
+                    <p>FOUNDER</p>
+                    <div class="click-hint">Click to view full card</div>
+                </div>
+                <div class="team-member team-member-clickable" data-image="annirudh-cofounder.png"
+                    onclick="openTeamModal(this)">
+                    <div class="team-photo team-photo-image">
+                        <img src="annirudh-cofounder.png" alt="Annirudh - Co-Founder">
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <h3>Annirudh</h3>
+                    <p>CO-FOUNDER</p>
+                    <div class="click-hint">Click to view full card</div>
+                </div>
+                <div class="team-member team-member-clickable" data-image="duruvaa-cofounder.png"
+                    onclick="openTeamModal(this)">
+                    <div class="team-photo team-photo-image">
+                        <img src="duruvaa-cofounder.png" alt="Duruvaa S - Co-Founder">
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <h3>Duruvaa S</h3>
+                    <p>CO-FOUNDER</p>
+                    <div class="click-hint">Click to view full card</div>
+                </div>
+                <div class="team-member team-member-clickable" data-image="akshay-cofounder.png"
+                    onclick="openTeamModal(this)">
+                    <div class="team-photo team-photo-image">
+                        <img src="akshay-cofounder.png" alt="Akshay Kora - Co-Founder">
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <h3>Akshay Kora</h3>
+                    <p>CO-FOUNDER</p>
+                    <div class="click-hint">Click to view full card</div>
+                </div>
+                <div class="team-member team-member-clickable" data-image="nithin-cofounder.png"
+                    onclick="openTeamModal(this)">
+                    <div class="team-photo team-photo-image">
+                        <img src="nithin-cofounder.png" alt="Nithin - Co-Founder">
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <h3>Nithin</h3>
+                    <p>CO-FOUNDER</p>
+                    <div class="click-hint">Click to view full card</div>
+                </div>
+                <div class="team-member team-member-clickable" data-image="sarvesh-cofounder.png"
+                    onclick="openTeamModal(this)">
+                    <div class="team-photo team-photo-image">
+                        <img src="sarvesh-cofounder.png" alt="Sarvesh Manohar - Co-Founder">
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <h3>Sarvesh Manohar</h3>
+                    <p>CO-FOUNDER</p>
+                    <div class="click-hint">Click to view full card</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Member Modal -->
+    <div id="teamModal" class="team-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img id="modalImage" src="" alt="Team Member ID Card">
+        </div>
+    </div>
+
+    <section id="careers">
+        <h2 class="section-title fade-in">
+            <span class="title-word">Careers</span>
+        </h2>
+        <div class="content-wrapper fade-in careers-content">
+            <p class="reveal-text">We are building a team of curious, driven individuals who want to work on meaningful
+                problems and shape the future of work and business efficiency.</p>
+            <p class="reveal-text"><strong>We look for people who are:</strong></p>
+            <div class="qualities-list">
+                <div class="quality-item">Problem‑oriented</div>
+                <div class="quality-item">Detail‑driven</div>
+                <div class="quality-item">Curious about systems</div>
+                <div class="quality-item">Comfortable building from zero</div>
+                <div class="quality-item">Passionate about tools & technology</div>
+            </div>
+            <div class="opportunities">
+                <h3>Opportunities exist across:</h3>
+                <div class="opp-list">
+                    <div class="opp-item">Research & Field Study</div>
+                    <div class="opp-item">Software & Systems Development</div>
+                    <div class="opp-item">Hardware & Prototyping</div>
+                    <div class="opp-item">Product Design & UX</div>
+                    <div class="opp-item">Operations & Partnerships</div>
+                </div>
+            </div>
+            <p style="margin-top: 40px; text-align: center;" class="reveal-text">If you're interested in joining our
+                journey, reach out to us. We'd love to explore how you can contribute.</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#inquiry" class="cta-button">
+                    <span>Get In Touch</span>
+                    <div class="button-ripple"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry">
+        <h2 class="section-title fade-in">
+            <span class="title-word">Make</span>
+            <span class="title-word">an</span>
+            <span class="title-word">Inquiry</span>
+        </h2>
+        <div class="content-wrapper fade-in">
+            <div class="form-container">
+                <form id="inquiryForm" action="https://formsubmit.co/dasskantechnologies@gmail.com" method="POST">
+                    <!-- Config Fields -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Inquiry from Website">
+                    <input type="hidden" name="_next" value="https://dasskan.com/index.html?submitted=true">
+
+                    <!-- If running locally, the _next URL might need to be adjusted or removed to default to FormSubmit's landing page. 
+                         For local development, we'll use a script to set the current location as next. -->
+
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="input-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="input-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Inquiry Type *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Product Inquiry">Product Inquiry</option>
+                            <option value="Service Request">Service Request</option>
+                            <option value="Collaboration">Collaboration</option>
+                            <option value="Career Opportunity">Career Opportunity</option>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="input-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                        <span class="input-border"></span>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Submit Inquiry</span>
+                        <div class="button-ripple"></div>
+                    </button>
+                </form>
+
+                <!-- Thank You Message (Hidden by default) -->
+                <div id="thankYouMessage" class="thank-you-message" style="display: none;">
+                    <div class="thank-you-icon">✓</div>
+                    <h3>Thank You!</h3>
+                    <p>Your inquiry has been submitted successfully. We'll get back to you soon!</p>
+                    <button onclick="resetForm()" class="submit-btn">
+                        <span>Submit Another Inquiry</span>
+                        <div class="button-ripple"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title fade-in">
+            <span class="title-word">Contact</span>
+            <span class="title-word">Us</span>
+        </h2>
+        <div class="content-wrapper fade-in">
+            <div class="contact-links">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <span>📧</span>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:dasskantechnologies@gmail.com">dasskantechnologies@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <span>💼</span>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/company/dasskan-technologies/posts/?feedView=all"
+                        target="_blank">Visit Our Page</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <span>📱</span>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    <h3>Instagram</h3>
+                    <a href="https://www.instagram.com/dass.kan?igsh=ZGpkOTg2b2wwZDVj" target="_blank">@dass.kan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p> DASSKAN Technologies</p>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <!-- Vanilla Tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
