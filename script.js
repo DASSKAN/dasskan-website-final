@@ -193,51 +193,75 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.fade-in, .reveal-text, .service-card, .step, .team-member, .quality-item, .opp-item, .contact-item');
     revealElements.forEach(el => observer.observe(el));
 
-    // --- Inquiry Form Handling (Native Post with Redirect) ---
+    // --- EmailJS Initialization ---
+    emailjs.init('NTR4Cv65FPQ7dCDYp'); // Your Public Key
+
+    // --- Inquiry Form Handling with EmailJS ---
     const inquiryForm = document.getElementById('inquiryForm');
     const thankYouMessage = document.getElementById('thankYouMessage');
 
-    // Check if returned from successful submission
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('submitted') === 'true') {
-        if (inquiryForm && thankYouMessage) {
-            inquiryForm.style.display = 'none';
-            thankYouMessage.style.display = 'block';
-
-            // Scroll to the inquiry section
-            const inquirySection = document.getElementById('inquiry');
-            if (inquirySection) {
-                // slight delay to ensure layout is ready
-                setTimeout(() => {
-                    inquirySection.scrollIntoView({ behavior: 'smooth' });
-                }, 500);
-            }
-        }
-    }
-
-    // Set the return URL to the current page dynamically
     if (inquiryForm) {
-        const nextInput = inquiryForm.querySelector('input[name="_next"]');
-        if (nextInput) {
-            // We append ?submitted=true to the current URL for the redirect
-            // Handle existing params if any
-            const currentUrl = window.location.href.split('?')[0];
-            nextInput.value = `${currentUrl}?submitted=true`;
-        }
+        inquiryForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get the submit button
+            const submitBtn = inquiryForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.querySelector('span').textContent;
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.querySelector('span').textContent = 'Sending...';
+            submitBtn.style.opacity = '0.6';
+
+            // Send email using EmailJS
+            emailjs.sendForm('service_4880hle', 'template_kqnkrog', this)
+                .then(function (response) {
+                    console.log('SUCCESS!', response.status, response.text);
+
+                    // Show thank you message
+                    inquiryForm.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
+
+                    // Reset form
+                    inquiryForm.reset();
+
+                    // Scroll to the inquiry section
+                    const inquirySection = document.getElementById('inquiry');
+                    if (inquirySection) {
+                        setTimeout(() => {
+                            inquirySection.scrollIntoView({ behavior: 'smooth' });
+                        }, 300);
+                    }
+                }, function (error) {
+                    console.log('FAILED...', error);
+
+                    // Show error message
+                    alert('Oops! Something went wrong. Please try again or contact us directly at dasskantechnologies@gmail.com');
+
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector('span').textContent = originalBtnText;
+                    submitBtn.style.opacity = '1';
+                });
+        });
     }
 
     // Define resetForm globally so the onclick attribute works
     window.resetForm = function () {
         if (inquiryForm && thankYouMessage) {
-            // Remove the query param from URL so refresh doesn't show message again
-            const url = new URL(window.location);
-            url.searchParams.delete('submitted');
-            window.history.replaceState({}, '', url);
-
             thankYouMessage.style.display = 'none';
             inquiryForm.style.display = 'block';
+
+            // Reset the submit button state
+            const submitBtn = inquiryForm.querySelector('.submit-btn');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.querySelector('span').textContent = 'Submit Inquiry';
+                submitBtn.style.opacity = '1';
+            }
         }
     };
+
 
     // ==================== CHATBOT FUNCTIONALITY ====================
 
